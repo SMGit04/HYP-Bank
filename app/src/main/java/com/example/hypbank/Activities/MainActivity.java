@@ -27,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
         mainLayout = findViewById(R.id.main_layout);
 
-        baseUrl = "http://10.0.2.2:5174/api/CardValidator?cardNumber=4847954048973513";
+        // baseUrl = "http://10.0.2.2:5174/api/CardValidator?cardNumber=4847954048973513";
 
         AlertActivity alertActivity = new AlertActivity(this, closeButton);
         alertActivity.showAlertDialog();
 
 /*        ApiService apiService = new ApiService(this, data);
         apiService.performApiCall(baseUrl);*/
+
+
+        // TODO: Call RetrofitClient class to perform API call
     }
 }
