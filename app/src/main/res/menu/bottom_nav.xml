@@ -13,7 +13,8 @@
     <item
         android:id="@+id/placeholder"
         android:checkable="false"
-        android:title="TODO" />
+        android:enabled="false"
+        android:title="" />
 
     <item
         android:id="@+id/menuNotification"
