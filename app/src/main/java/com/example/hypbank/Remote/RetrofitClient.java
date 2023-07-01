@@ -1,4 +1,4 @@
-package com.example.hypbank.Activities.Remote;
+package com.example.hypbank.Remote;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

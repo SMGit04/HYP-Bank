@@ -1,4 +1,4 @@
-package com.example.hypbank.Activities.Remote;
+package com.example.hypbank.Remote;
 
 import android.database.Observable;
 
