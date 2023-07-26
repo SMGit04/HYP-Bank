@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 public interface INfcEncryptionService {
 
     // https://localhost:7126/api/Encryption
+    // https://localhost:7126/api/ApproveOrDeclineTransaction
     @POST("")
     Observable<String> registerUser(@Body UserModel userModel);
 

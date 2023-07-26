@@ -27,7 +27,7 @@ public class FirebaseService extends FirebaseMessagingService {
         String data = new Gson().toJson(message.getData());
 
         //Create notification object
-        Utils.showNotification(getApplicationContext(), title, body);
+        Utils.showNotification(this, title, body);
 
     }
 }

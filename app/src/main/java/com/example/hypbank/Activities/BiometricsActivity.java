@@ -50,11 +50,10 @@ public class BiometricsActivity {
             @Override
             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Toast.makeText(context, "Payment Successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Payment Verified", Toast.LENGTH_SHORT).show();
 
                 ((FragmentActivity) context).setVisible(true);
             }
-
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
