@@ -9,4 +9,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="dark_blue">#00427A</color>
     <color name="light_blue">#005FAF</color>
+    <color name="bottom_nav_icon_color">#FF3700B3</color> <!-- Change this to your desired icon color -->
+    <color name="bottom_nav_text_color">#FF000000</color> <!-- Change this to your desired text color -->
 </resources>
