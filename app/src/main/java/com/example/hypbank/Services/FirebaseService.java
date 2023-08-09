@@ -9,6 +9,8 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
 
+import java.util.Objects;
+
 public class FirebaseService extends FirebaseMessagingService {
 
     @Override
@@ -22,7 +24,7 @@ public class FirebaseService extends FirebaseMessagingService {
         super.onMessageReceived(message);
 
         // Show notification when received message from firebase
-        String title = message.getNotification().getTitle();
+        String title = Objects.requireNonNull(message.getNotification()).getTitle();
         String body = message.getNotification().getBody();
         String data = new Gson().toJson(message.getData());
 

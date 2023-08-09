@@ -1,8 +1,6 @@
 package com.example.hypbank.Activities;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,12 +12,10 @@ import androidx.fragment.app.FragmentActivity;
 import java.util.concurrent.Executor;
 
 public class BiometricsActivity {
-    private final Context context;
     private final BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
     public BiometricsActivity(Context context) {
-        this.context = context;
         biometricPrompt = getPrompt(context);
     }
     @NonNull
@@ -43,12 +39,12 @@ public class BiometricsActivity {
 
         biometricPrompt = new BiometricPrompt((FragmentActivity) context, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
-            public void onAuthenticationError(int errorCode, CharSequence errString) {
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
             }
 
             @Override
-            public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(context, "Payment Verified", Toast.LENGTH_SHORT).show();
 
