@@ -8,18 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.example.hypbank.R;
+import com.microsoft.signalr.HubConnection;
+import com.microsoft.signalr.HubConnectionBuilder;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView data;
+  //  private TextView data;
     private CoordinatorLayout mainLayout;
-    ImageButton closeButton;
+    ImageButton alertButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        closeButton = findViewById(R.id.makePaymentButton);
-        data = findViewById(R.id.textView); // findViewById(R.id.data);
+        alertButton = findViewById(R.id.makePaymentButton);
+      //  data = findViewById(R.id.textView); // findViewById(R.id.data);
 
         mainLayout = findViewById(R.id.main_layout);
 
@@ -41,8 +43,15 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                });
 
+        HubConnection hubConnection = HubConnectionBuilder.create("URL").build(); // TODO: Add the local server signalR url
 
-        AlertActivity alertActivity = new AlertActivity(this, closeButton);
+        NotificationsActivity notificationsActivity = new NotificationsActivity();
+        hubConnection.on("broadcastMessage", (message) -> {
+            notificationsActivity.displayNotification(message);
+        }, String.class);
+        hubConnection.start();
+
+        AlertActivity alertActivity = new AlertActivity(this, alertButton);
         alertActivity.showAlertDialog();
 
     }

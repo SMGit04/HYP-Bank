@@ -35,6 +35,12 @@ public class BiometricsActivity {
                 break;
         }
 
+        return Execute(context);
+    }
+
+    @NonNull
+    private BiometricPrompt Execute(Context context) {
+        final BiometricPrompt biometricPrompt;
         Executor executor = ContextCompat.getMainExecutor(context);
 
         biometricPrompt = new BiometricPrompt((FragmentActivity) context, executor, new BiometricPrompt.AuthenticationCallback() {
@@ -64,6 +70,7 @@ public class BiometricsActivity {
                 .build();
         return biometricPrompt;
     }
+
     public void authenticate() {
         biometricPrompt.authenticate(promptInfo);
     }
