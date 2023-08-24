@@ -24,7 +24,7 @@ public class AlertActivity {
             @Override
             public void onClick(View v) {
                 builder.setTitle("Alert")
-                        .setMessage("Are you making a payment?")
+                        .setMessage("Authorize Transaction of R " + "Merchant Name" )
                         .setCancelable(true)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
