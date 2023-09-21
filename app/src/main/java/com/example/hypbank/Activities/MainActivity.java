@@ -2,6 +2,10 @@ package com.example.hypbank.Activities;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -23,25 +27,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         alertButton = findViewById(R.id.makePaymentButton);
 
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-                        // Get new FCM registration token
-                        String token = task.getResult();
-                        System.out.println("Token: " + token);
-                    }
-                });
-
-        showAlertActivity();
+        if (getIntent().getExtras() != null) {
+            Boolean variable = getIntent().getExtras().getBoolean("SHOW_ALERT");
+            if (variable) {
+                showAlertActivity();
+            }
+        }
     }
 
     public void showAlertActivity() {
-        AlertActivity alertActivity = new AlertActivity(this, alertButton);
+        AlertActivity alertActivity = new AlertActivity(this);
         alertActivity.showAlertDialog();
     }
 }

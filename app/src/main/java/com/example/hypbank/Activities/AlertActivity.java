@@ -3,26 +3,18 @@ package com.example.hypbank.Activities;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 public class AlertActivity {
 
     private final AlertDialog.Builder builder;
     private final Context context;
-    private final ImageButton closeButton;
 
-    public AlertActivity(Context context, ImageButton closeButton) {
+    public AlertActivity(Context context) {
         this.context = context;
-        this.closeButton = closeButton;
         builder = new AlertDialog.Builder(context);
     }
 
     public void showAlertDialog() {
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 builder.setTitle("Alert")
                         .setMessage("Authorize Transaction of R " + "Merchant Name" )
                         .setCancelable(true)
@@ -40,8 +32,6 @@ public class AlertActivity {
                         })
                         .create() // Create the AlertDialog instance
                         .show();
-            }
-        });
     }
     public void performBiometricsAuthentication() {
         BiometricsActivity biometricsActivity = new BiometricsActivity(context);
