@@ -9,6 +9,8 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.hypbank.Models.TransactionRequestResultModel;
+
 import java.util.concurrent.Executor;
 
 public class BiometricsActivity {
@@ -23,6 +25,7 @@ public class BiometricsActivity {
 
         final BiometricPrompt biometricPrompt;
         BiometricManager biometricManager = BiometricManager.from(context);
+
         switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
                 Toast.makeText(context, "Device does not support Biometrics", Toast.LENGTH_SHORT).show();
@@ -42,23 +45,27 @@ public class BiometricsActivity {
     private BiometricPrompt Execute(Context context) {
         final BiometricPrompt biometricPrompt;
         Executor executor = ContextCompat.getMainExecutor(context);
+        TransactionRequestResultModel requestResultModel = new TransactionRequestResultModel();
 
         biometricPrompt = new BiometricPrompt((FragmentActivity) context, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
+                requestResultModel.setBiometricAuthenticated(false);
             }
 
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(context, "Payment Verified", Toast.LENGTH_SHORT).show();
-
+                requestResultModel.setBiometricAuthenticated(true);  // Set GREEN light for model
                 ((FragmentActivity) context).setVisible(true);
             }
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
+                requestResultModel.setBiometricAuthenticated(false);    // Set RED light for model
+
             }
         });
 

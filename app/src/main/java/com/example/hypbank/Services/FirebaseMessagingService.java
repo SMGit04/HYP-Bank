@@ -28,7 +28,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     super.onMessageReceived(remoteMessage);
-
     String title = remoteMessage.getNotification().getTitle();
     String message = remoteMessage.getNotification().getBody();
 
@@ -48,7 +47,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
             .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true);
 
