@@ -16,7 +16,7 @@ import com.example.hypbank.Activities.MainActivity;
 import com.example.hypbank.R;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
+public class NotificationService extends com.google.firebase.messaging.FirebaseMessagingService {
     String NOTIFICATION_CHANNEL_ID = "my_channel_id_01";
     @Override
     public void onCreate() {

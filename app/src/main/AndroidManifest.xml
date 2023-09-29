@@ -32,7 +32,7 @@
         </activity>
 
         <service
-            android:name=".Services.FirebaseMessagingService"
+            android:name=".Services.NotificationService"
             android:exported="true"
             android:stopWithTask="false">
             <intent-filter>

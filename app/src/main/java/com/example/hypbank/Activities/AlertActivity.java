@@ -18,8 +18,9 @@ public class AlertActivity {
 
     public void showAlertDialog() {
         TransactionRequestResultModel requestResultModel = new TransactionRequestResultModel();
+        // Authorize Transaction of R PRICE " + "at MERCHANT_NAME
                 builder.setTitle("Alert")
-                        .setMessage("Authorize Transaction of R PRICE " + "at MERCHANT_NAME" )
+                        .setMessage("Are you making a payment?" )
                         .setCancelable(true)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
