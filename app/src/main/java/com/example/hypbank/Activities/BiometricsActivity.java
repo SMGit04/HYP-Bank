@@ -1,6 +1,7 @@
 package com.example.hypbank.Activities;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -9,17 +10,26 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.hypbank.Interfaces.IRetrofitClient;
 import com.example.hypbank.Models.TransactionRequestResultModel;
+import com.example.hypbank.Remote.RetrofitClient;
 
+import java.util.Objects;
 import java.util.concurrent.Executor;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class BiometricsActivity {
     private final BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
+    Context context;
 
     public BiometricsActivity(Context context) {
         biometricPrompt = getPrompt(context);
     }
+
     @NonNull
     private BiometricPrompt getPrompt(Context context) {
 
@@ -59,8 +69,11 @@ public class BiometricsActivity {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(context, "Payment Verified", Toast.LENGTH_SHORT).show();
                 requestResultModel.setBiometricAuthenticated(true);  // Set GREEN light for model
+                boolean biometricAuthenticated = requestResultModel.isBiometricAuthenticated();
+                Toast.makeText(context, String.valueOf(biometricAuthenticated), Toast.LENGTH_SHORT).show();
                 ((FragmentActivity) context).setVisible(true);
             }
+
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
@@ -81,4 +94,5 @@ public class BiometricsActivity {
     public void authenticate() {
         biometricPrompt.authenticate(promptInfo);
     }
+
 }

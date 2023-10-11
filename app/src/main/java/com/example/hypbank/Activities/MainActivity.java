@@ -41,7 +41,21 @@ public class MainActivity extends AppCompatActivity {
                 showAlertActivity();
             }
         }
-     //   sendTransactionRequestResponse();
+        // sendTransactionRequestResponse();
+
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(new OnCompleteListener<String>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<String> task) {
+//                        if (!task.isSuccessful()) {
+//                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+//                            return;
+//                        }
+//                        // Get new FCM registration token
+//                        String token = task.getResult();
+//                        System.out.println("Token: " + token);
+//                    }
+//                });
     }
 
     private void sendTransactionRequestResponse() {
@@ -53,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<TransactionRequestResultModel> call, @NonNull Response<TransactionRequestResultModel> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, response.code(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 boolean responseMessage = requestResultModel.getResponseMessage();

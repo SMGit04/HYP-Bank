@@ -10,10 +10,11 @@ public class RetrofitClient {
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofit() {
-
+        // https://banksimulator.azurewebsites.net/api/
+        // http://10.0.2.2:5175/api/
         if (retrofit == null)
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:5174/api/")
+                    .baseUrl("https://banksimulator.azurewebsites.net/api/")
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -21,6 +22,5 @@ public class RetrofitClient {
         return retrofit;
 
         // TODO: Configure baseURL to work with a real device
-        // Use wifi access point: use azure cloud from UJ
     }
 }
