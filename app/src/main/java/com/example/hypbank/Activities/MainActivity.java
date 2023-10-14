@@ -40,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
             if (variable) {
                 showAlertActivity();
             }
+           // sendTransactionRequestResponse();
         }
-        // sendTransactionRequestResponse();
-
 //        FirebaseMessaging.getInstance().getToken()
 //                .addOnCompleteListener(new OnCompleteListener<String>() {
 //                    @Override
@@ -56,32 +55,6 @@ public class MainActivity extends AppCompatActivity {
 //                        System.out.println("Token: " + token);
 //                    }
 //                });
-    }
-
-    private void sendTransactionRequestResponse() {
-        TransactionRequestResultModel requestResultModel = new TransactionRequestResultModel();
-        IRetrofitClient retrofitClient = RetrofitClient.getRetrofit().create(IRetrofitClient.class);
-        Call<TransactionRequestResultModel> modelCall = retrofitClient.sendAuthenticationResponse(requestResultModel);
-
-        modelCall.enqueue(new Callback<TransactionRequestResultModel>() {
-            @Override
-            public void onResponse(@NonNull Call<TransactionRequestResultModel> call, @NonNull Response<TransactionRequestResultModel> response) {
-                if (!response.isSuccessful()) {
-//                    Toast.makeText(MainActivity.this, response.code(), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                boolean responseMessage = requestResultModel.getResponseMessage();
-                boolean biometricAuthenticated = requestResultModel.isBiometricAuthenticated();
-                Toast.makeText(MainActivity.this, responseMessage + "\n" + biometricAuthenticated, Toast.LENGTH_SHORT).show();
-                System.out.println(responseMessage + "\n" + biometricAuthenticated);
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<TransactionRequestResultModel> call, @NonNull Throwable t) {
-                Log.d("onFailure: ", Objects.requireNonNull(t.getMessage()));
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     public void showAlertActivity() {

@@ -11,10 +11,10 @@ public class RetrofitClient {
 
     public static Retrofit getRetrofit() {
         // https://banksimulator.azurewebsites.net/api/
-        // http://10.0.2.2:5175/api/
+        // http://10.0.2.2:5174/api/
         if (retrofit == null)
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://banksimulator.azurewebsites.net/api/")
+                    .baseUrl("http://10.0.2.2:5174/api/")
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

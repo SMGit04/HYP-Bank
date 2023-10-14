@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.hypbank.Interfaces.IRetrofitClient;
 import com.example.hypbank.Models.TransactionRequestResultModel;
 import com.example.hypbank.Remote.RetrofitClient;
+import com.example.hypbank.Services.ResponseService;
 
 import java.util.Objects;
 import java.util.concurrent.Executor;
@@ -55,36 +56,31 @@ public class BiometricsActivity {
     private BiometricPrompt Execute(Context context) {
         final BiometricPrompt biometricPrompt;
         Executor executor = ContextCompat.getMainExecutor(context);
-        TransactionRequestResultModel requestResultModel = new TransactionRequestResultModel();
-
+        ResponseService responseService = new ResponseService();
         biometricPrompt = new BiometricPrompt((FragmentActivity) context, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                requestResultModel.setBiometricAuthenticated(false);
             }
 
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(context, "Payment Verified", Toast.LENGTH_SHORT).show();
-                requestResultModel.setBiometricAuthenticated(true);  // Set GREEN light for model
-                boolean biometricAuthenticated = requestResultModel.isBiometricAuthenticated();
-                Toast.makeText(context, String.valueOf(biometricAuthenticated), Toast.LENGTH_SHORT).show();
+                responseService.sendTransactionRequestResponse(true, true);
                 ((FragmentActivity) context).setVisible(true);
             }
-
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                requestResultModel.setBiometricAuthenticated(false);    // Set RED light for model
-
+                responseService.sendTransactionRequestResponse(true, false);
             }
         });
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Authorize Payment")
                 .setNegativeButtonText("Cancel")
+
                 .setDescription("Please verify your fingerprint to authorize payment")
                 .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG)
                 .build();
