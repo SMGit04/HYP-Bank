@@ -22,28 +22,28 @@ public class AlertActivity {
         TransactionRequestResultModel requestResultModel = new TransactionRequestResultModel();
         ResponseService responseService = new ResponseService();
         // Authorize Transaction of R PRICE " + "at MERCHANT_NAME
-                builder.setTitle("Alert")
-                        .setMessage("Are you making a payment?" )
-                        .setCancelable(true)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                              //  performBiometricsAuthentication();
-                                responseService.sendTransactionRequestResponse(true, true);
-                              //  requestResultModel.setResponseMessage(true);
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                responseService.sendTransactionRequestResponse(false, false);
-                                Toast.makeText(context, "Payment Declined", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                            }
-                        })
-                        .create() // Create the AlertDialog instance
-                        .show();
+        builder.setTitle("Alert")
+                .setMessage("Are you making a payment?")
+                .setCancelable(true)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        performBiometricsAuthentication();
+                        //  requestResultModel.setResponseMessage(true);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        responseService.sendTransactionRequestResponse(false, false);
+                        Toast.makeText(context, "Payment Declined", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                })
+                .create() // Create the AlertDialog instance
+                .show();
     }
+
     public void performBiometricsAuthentication() {
         BiometricsActivity biometricsActivity = new BiometricsActivity(context);
         biometricsActivity.authenticate();
