@@ -28,8 +28,8 @@ public class AlertActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        performBiometricsAuthentication();
-                        //  requestResultModel.setResponseMessage(true);
+                        // performBiometricsAuthentication();
+                        responseService.sendTransactionRequestResponse(true, true);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
