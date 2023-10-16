@@ -9,6 +9,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="dark_blue">#00427A</color>
     <color name="light_blue">#005FAF</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="clr_otp_bg">#535288</color>
+    <color name="clr_otp_btn_yellow">#F8CD06</color>
+    <color name="clr_white_text">#FFFFFF</color>
+    <color name="clr_grey_text">#D3D3D3</color>
+    <color name="clr_grey_text_transparent">#80D3D3D3</color>
     <color name="bottom_nav_icon_color">#FF3700B3</color> <!-- Change this to your desired icon color -->
     <color name="bottom_nav_text_color">#FF000000</color> <!-- Change this to your desired text color -->
 </resources>
