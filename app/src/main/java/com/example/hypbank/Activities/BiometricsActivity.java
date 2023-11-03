@@ -79,11 +79,8 @@ public class BiometricsActivity {
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Authorize Payment")
-                .setNegativeButtonText("Cancel")
-
-                .setDescription("Please verify your fingerprint to authorize payment")
-                .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG)
-                .build();
+                .setDescription("Touch the fingerprint sensor\nTo verify payment")
+                .setDeviceCredentialAllowed(true).build();
         return biometricPrompt;
     }
 
