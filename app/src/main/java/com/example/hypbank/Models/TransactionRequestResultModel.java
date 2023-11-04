@@ -1,10 +1,17 @@
 package com.example.hypbank.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TransactionRequestResultModel {
+    // Yes or No
+    private boolean responseMessage;
 
-    private boolean responseMessage; // Yes or No
-    private  boolean biometricAuthenticated; // Biometrics recognised or not
-
+    // Biometrics recognised or not
+    private  boolean biometricAuthenticated;
+    @SerializedName("isApproved")
+    private boolean isApproved;
+    @SerializedName("isBlocked")
+    private boolean isBlocked;
     public TransactionRequestResultModel() {
     }
 
@@ -20,7 +27,15 @@ public class TransactionRequestResultModel {
     public void setResponseMessage(boolean responseMessage) {
         this.responseMessage = responseMessage;
     }
-
+    public void setIsBlocked(boolean isBlocked) {
+        this.isBlocked = isBlocked;
+    }
+    public void setIsApprovedMessage(boolean isApproved) {
+        this.isApproved = isApproved;
+    }
+    public boolean getIsApprovedMessage() {
+        return isApproved;
+    }
     public boolean isBiometricAuthenticated() {
         return biometricAuthenticated;
     }

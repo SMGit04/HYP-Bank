@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
            // sendTransactionRequestResponse();
         }
+
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("Token: " + token);
                     }
                 });
+
     }
 
     public void showAlertActivity() {

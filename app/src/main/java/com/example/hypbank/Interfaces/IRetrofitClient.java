@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface IRetrofitClient {
-@POST("/api/Notification/authorizationResponse")
+@POST("/api/TransactionRequest/ApproveOrDeclineTransaction")
     Call<TransactionRequestResultModel> sendAuthenticationResponse(@Body TransactionRequestResultModel requestResultModel);
 }

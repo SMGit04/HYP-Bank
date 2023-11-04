@@ -27,19 +27,26 @@ public class ResponseService {
         IRetrofitClient retrofitClient = RetrofitClient.getRetrofit().create(IRetrofitClient.class);
         Call<TransactionRequestResultModel> modelCall = retrofitClient.sendAuthenticationResponse(requestResultModel);
 
-        requestResultModel.setResponseMessage(alertResponse);
-        requestResultModel.setBiometricAuthenticated(biometricResponse);
-
+        if (alertResponse == false) {
+            requestResultModel.setIsApprovedMessage(false);
+            requestResultModel.setIsBlocked(false);
+        } else if (alertResponse && biometricResponse) {
+            requestResultModel.setIsApprovedMessage(true);
+            requestResultModel.setIsBlocked(false);
+        } else {
+            requestResultModel.setIsApprovedMessage(true);
+            requestResultModel.setIsBlocked(false);
+        }
 
         modelCall.enqueue(new Callback<TransactionRequestResultModel>() {
             @Override
             public void onResponse(@NonNull Call<TransactionRequestResultModel> call, @NonNull Response<TransactionRequestResultModel> response) {
                 if (!response.isSuccessful()) {
-                    // Handle the failure case
                     Toast.makeText(context, "Failed respond", Toast.LENGTH_SHORT).show();
                     System.out.println("Failed respond");
                     return;
                 }
+
             }
             @Override
             public void onFailure(@NonNull Call<TransactionRequestResultModel> call, @NonNull Throwable t) {
