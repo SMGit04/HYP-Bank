@@ -7,40 +7,21 @@ public class TransactionRequestResultModel {
     private boolean responseMessage;
 
     // Biometrics recognised or not
-    private  boolean biometricAuthenticated;
+    private boolean biometricAuthenticated;
     @SerializedName("isApproved")
     private boolean isApproved;
-    @SerializedName("isBlocked")
-    private boolean isBlocked;
+    @SerializedName("userID")
+    private String userID;
+
     public TransactionRequestResultModel() {
     }
 
-    public TransactionRequestResultModel(boolean responseMessage, boolean biometricAuthenticated) {
-        this.responseMessage = responseMessage;
-        this.biometricAuthenticated = biometricAuthenticated;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public boolean getResponseMessage() {
-        return responseMessage;
-    }
-
-    public void setResponseMessage(boolean responseMessage) {
-        this.responseMessage = responseMessage;
-    }
-    public void setIsBlocked(boolean isBlocked) {
-        this.isBlocked = isBlocked;
-    }
     public void setIsApprovedMessage(boolean isApproved) {
         this.isApproved = isApproved;
     }
-    public boolean getIsApprovedMessage() {
-        return isApproved;
-    }
-    public boolean isBiometricAuthenticated() {
-        return biometricAuthenticated;
-    }
 
-    public void setBiometricAuthenticated(boolean biometricAuthenticated) {
-        this.biometricAuthenticated = biometricAuthenticated;
-    }
 }

@@ -30,8 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VerificationActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <service
             android:name=".Services.NotificationService"

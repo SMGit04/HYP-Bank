@@ -1,7 +1,6 @@
 package com.example.hypbank.Activities;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -10,17 +9,8 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.hypbank.Interfaces.IRetrofitClient;
-import com.example.hypbank.Models.TransactionRequestResultModel;
-import com.example.hypbank.Remote.RetrofitClient;
 import com.example.hypbank.Services.ResponseService;
-
-import java.util.Objects;
 import java.util.concurrent.Executor;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BiometricsActivity {
     private final BiometricPrompt biometricPrompt;
@@ -62,7 +52,6 @@ public class BiometricsActivity {
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
             }
-
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
